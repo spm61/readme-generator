@@ -127,10 +127,25 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+
+    fs.writeFile(fileName, data, (error) => {
+        if (error)
+            throw error;
+        console.log("Readme File Successfully generated!");
+    })
+
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    //when we start the app, that's when we load inquirer and prompt with the questions.
+    inquirer.prompt(questions)
+    .then (function (userResponses) {
+        console.log(userResponses);
+        writeToFile("README.md");
+    });
+}
 
 // Function call to initialize app
 init();
