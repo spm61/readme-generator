@@ -51,7 +51,7 @@ const questions = [
     {
         type: 'input',
         name: 'usage',
-        message: 'How do you use this project? (Required)',
+        message: 'REQUIRED: How do you use this project',
         validate: usageInstructions => {
             if (usageInstructions) {
                 return true;
@@ -143,7 +143,7 @@ function init() {
     inquirer.prompt(questions)
     .then (function (userResponses) {
         console.log(userResponses);
-        writeToFile("README.md");
+        writeToFile("README.md", userResponses);
     });
 }
 
